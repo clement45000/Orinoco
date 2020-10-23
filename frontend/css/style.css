@@ -1,0 +1,67 @@
+/* Page d'accueil*/
+section{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items:center;
+align-content: center;
+}
+
+footer{
+    height: 250px;
+    margin-top: 50px;
+}
+
+/*Div qui englobe une camera*/
+.testdiv{
+text-align: center;
+margin-right:50px;
+margin-top: 30px;
+width: 35%;
+height: 450px;
+border: 2px solid rgb(66, 66, 66);
+border-radius: 15px 15px 15px 15px;
+}
+
+/*Les images */
+.testimg{
+width: 50%;
+border-radius: 15px 15px 15px 15px;
+}
+
+.price
+{
+    font-weight: bold;
+}
+
+.name
+{
+    font-weight: bold;
+}
+/*---------------------------*/
+/* Page Produit.html*/
+
+/*div contentant les info de la camera*/
+#divcamerainfos
+{
+    text-align: center;
+    margin-right:50px;
+    margin-top: 30px;
+    width: 50%;
+    height: 500px;
+    border: 2px solid rgb(66, 66, 66);
+    border-radius: 15px 15px 15px 15px;
+}
+
+/*Image*/
+#camerapicture{
+    width: 70%;
+}
+
+.cameraname{
+    font-weight: bold;
+}
+
+.pricecamera{
+    font-weight: bold;
+}
