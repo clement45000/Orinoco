@@ -4,7 +4,6 @@ function addProduct(response, section){
     
     //création d'une div parente pour insérer toutes les données
     const div = document.createElement("div");
-    //div.innerHTML = response.name;
     div.setAttribute("class"," testdiv");
 
    //Nom du produit
@@ -31,7 +30,7 @@ function addProduct(response, section){
    price.setAttribute("class", "h5 price");
    price.innerHTML = response.price + ",00" + " " + "€" + " " +  "TTC";
 
-   // Mettre un lien pour allés ver le produit en question via l'id
+   // Mettre un lien pour allés vers le produit en question via l'id
     const getCameraById = document.createElement("a");
     getCameraById.setAttribute("href", "produits.html?id=" + response._id );
 
@@ -53,12 +52,10 @@ function addDiv(section) {
 
 get("http://localhost:3000/api/cameras")
 .then(function (response){
-    const section = document.getElementsByClassName('product');
+    const section = document.getElementsByClassName('products');
     for(let i = 0; i < response.length; i++){
         addProduct(response[i], section);
     }
-
-  
 })
 .catch(function (err){
     console.log(err);
