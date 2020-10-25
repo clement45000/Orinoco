@@ -5,6 +5,34 @@ function getCameraId(){
     return id;
 }
 
+function AddProductToBasket(product){
+    // On créer un panier (création d'un tablueax vide pour y mettre les objets(les produits))
+    let basket = [product];
+    //taille du tableau (nombre d'objet de produit en locurrence)
+    let test = basket.length;
+    
+    let getBasketStorage = sessionStorage.setItem( "busket", JSON.stringify(product));
+  
+    // if(test === 0){
+    //     alert("le tableau est vide");
+    // } else{
+    //     alert(" le tableau contient" + " " + test + " " + "produit");
+    // }
+  //  console.log(product.name);
+   // console.log(product.price + "€");
+    //console.log(product.lenses[0]);
+ 
+   
+        // {
+    //     alert('Le tableau est vide');
+    // } else{
+    //     alert('Le tableau est pas vide');
+    // }
+  //  console.log(typeof product);
+    //console.log(basket);
+    //console.log(typeof basket);
+    }
+
 
 function AddCameraDetails(response){
 
@@ -32,26 +60,39 @@ function AddCameraDetails(response){
     description.setAttribute("class", "mt-3 pr-5 pl-5");
     description.innerHTML = response.description;
 
-    // Lentilles
+    // choix de la Lentilles
     const lenses = document.createElement("select");
     const optionsDefault = document.createElement("option");
     optionsDefault.innerHTML = "choix de la lentilles";
     lenses.appendChild(optionsDefault);
 
+    // Boucle pour pouvoir choisie la lentille
     for (let i = 0; i < response.lenses.length; i++){
         const option = document.createElement("option");
         option.innerHTML = response.lenses[i];
         lenses.appendChild(option);
     }
 
-    const btnAddCamera = document.createElement("button");
-    btnAddCamera.setAttribute("class", "btn btn-secondary mb-3 mt-3");
-    btnAddCamera.innerHTML = "Ajouter au panier";
-
-    // Prix des caméras
+    // Prix de l'appareil photo
     const price = document.createElement("p");
     price.setAttribute("class", "h5 pricecamera mt-3");
     price.innerHTML = response.price + ",00" + " " + "€" + " " +  "TTC";
+
+    // Bouton du panier 
+    const btnAddCamera = document.createElement("button");
+    btnAddCamera.setAttribute("class", "btn btn-primary mb-3 mt-3");
+    btnAddCamera.innerHTML = "Ajouter au panier";
+
+    //Récupération de la valeur de la lentilles selectionné (balise select)
+    //Par défault au click du button AJouter au panier la value de la balise (select) = choix de la lentille
+    btnAddCamera.addEventListener("click", function(){
+        //récupération de la balise select
+        const getBtnAddToBusket = document.getElementsByTagName("select");
+        // recupération de la valeur de la lentille au click du btn
+        const getBtnLensesValue = getBtnAddToBusket[0].value; 
+        console.log(getBtnLensesValue);
+    });
+
 
 
   getSection.appendChild(div);  
@@ -62,7 +103,11 @@ function AddCameraDetails(response){
     div.appendChild(lenses);
     div.appendChild(price);
     div.appendChild(btnAddCamera);
-
+    
+    //Ajouter le produit au panier (au session storage pour récupérer les informations dans
+    // la page panier )
+    AddProductToBasket(response);
+  //  console.log(response);
 }
 
 
@@ -70,11 +115,18 @@ function AddCameraDetails(response){
 const id = getCameraId();
 get("http://localhost:3000/api/cameras/" + id)
     .then(function (response) {
+        //affiche les details de la camera
         AddCameraDetails(response);
+        //console.log(response);
+        //Ajoute la camera dans le panier
+
+     
+        
         //créer une fonction comme accueil.js    
         //jojo = response
         //console.log(jojo);
     })
+    
     .catch(function (err){
         console.log(err);
         if (err === 0){
