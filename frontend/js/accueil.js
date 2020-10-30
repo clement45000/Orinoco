@@ -1,4 +1,11 @@
 
+// function getRandomInt(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+//   }
+// var number =  getRandomInt(800, 50000);
+// console.log(number);
+
+ 
 //Function qui récupère les data de l'api pour les mettre ensuite dans une div parente
 function addProduct(response, section){
     
@@ -50,13 +57,27 @@ function addDiv(section) {
     section[0].appendChild(div);
 }
 
+//compte le nombre de produit dans le panier
+function showNbItemsInBusket(){
+    let basketContent = JSON.parse(localStorage.getItem("basketContent"));
+    if(basketContent === null){
+        const nbItems = document.getElementById("numberofproduct");
+    }else{
+    const nbItems = document.getElementById("numberofproduct");
+    nbItems.innerHTML = basketContent.length;
+    }
+}
+showNbItemsInBusket();
+
 get("http://localhost:3000/api/cameras")
 .then(function (response){
     const section = document.getElementsByClassName('products');
+  
     for(let i = 0; i < response.length; i++){
         addProduct(response[i], section);
     }
 })
+
 .catch(function (err){
     console.log(err);
     if (err === 0){
