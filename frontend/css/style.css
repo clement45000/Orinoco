@@ -64,3 +64,11 @@ border-radius: 15px 15px 15px 15px;
 .pricecamera{
     font-weight: bold;
 }
+
+#infosbusket{
+    display: none;
+}
+
+#emptybusket{
+    display: none;
+}

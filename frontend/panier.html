@@ -27,17 +27,15 @@
             </div>
         </nav>
         <div class="container">
-            <h1 class="text-center mt-5 bg-dark text-light p-3">Mon panier</h1>
-            
-            <div id="basketitems"> 
-                   
-            </div>    
-            <div>     
-                
-            </div>
+        <h1 class="text-center mt-5 bg-dark text-light p-3">Mon panier</h1>
+        <p id="emptybusket" class="h5 text-center mb-5 mt-4">( Votre Panier est actuellement vide )</p>
+        </div>
+    
+
+        <div id="infosbusket" class="container">   
             <div class="shadow p-5 mt-5">
             <table class="table">
-                <p class="h5 text-center mb-5">( Votre Panier est actuellement vide )</p>
+               
                 <thead>
                   <tr>
                     <th scope="col">Nom du produit</th>
@@ -58,16 +56,18 @@
               <p class="mt-3">Prix total de la commande : <span id="totalprice" class="font-weight-bold"></span></p>
             </div>
             
-            <div class="shadow p-5 mt-5">
+            <div id="basket_form" class="shadow p-5 mt-5">
                 <p class="h2 text-center bg-dark text-light p-3 mb-4">Validez votre commande</p>
-                <form name="contact" method="post" novalidate="novalidate">
-                    <div class="form-group"><label  class="required">Nom</label><input type="text"  name="" required="required" placeholder="Entrez votre nom" class="form-control" /></div>
-                    <div class="form-group"><label  class="required">Prénom</label><input type="text"  name="" required="required" placeholder="Entrez votre prenom" class="form-control" /></div>
-                    <div class="form-group"><label  class="required">Adresse e-mail</label><input type="email"  name="" required="required" placeholder="Entrez votre mail" class="form-control" /></div>
-                    <div class="form-group"><label  class="required">Adresse</label><input type="text"  name="" required="required" placeholder="Entrez votre mail" class="form-control" /></div>
-                    <div class="form-group"><label  class="required">Ville </label><input type="text"  name="" required="required" placeholder="Entrez votre mail" class="form-control" /></div>
-                    <div class="form-group"><label  class="required">Code Postal</label><input type="number" name="" required="required" placeholder="Indiquez le sujet de votre message" class="form-control" /></div>
-                    <input type="submit" class="btn btn-primary mb-5" value="Confirmez la validation">
+                <form id="validation" name="contact" method="post">
+                    <span id="error" class="text-danger"></span>
+                    <div class="form-group"><label  class="required">Nom</label><input type="text" id="namecustomer"  name="nom" value=""   placeholder="Entrez votre nom" class="form-control" /></div>
+                    <div class="form-group"><label  class="required">Prénom</label><input type="text" id="lastname"  name="prenom" value=""    placeholder="Entrez votre prenom" class="form-control" /></div>
+                    <div class="form-group"><label  class="required">Adresse e-mail</label><input type="email" id="email"  name="mail" value=""   placeholder="Entrez votre mail" class="form-control" /></div>
+                    <div class="form-group"><label  class="required">Adresse</label><input type="text"  id="adress" name="adresse" value=""   placeholder="Entrez votre adresse" class="form-control" /></div>
+                    <div class="form-group"><label  class="required">Ville </label><input type="text" id="city" name="ville" value=""    placeholder="Entrez votre ville" class="form-control" /></div>
+                    <div class="form-group"><label  class="required">Code Postal</label><input type="number" id="postalcode"  name="codepostal" value=""  placeholder="Entrez votre code postal" class="form-control" /></div>
+                    <input type="submit" class="btn btn-primary mb-5" value="Valider la commande">  
+                    <!-- <button class="btn btn-success mb-5" id="bouton_envoi">Confirmez votre commande</button> -->
                 </form> 
             </div>
         </div>

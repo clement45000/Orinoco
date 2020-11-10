@@ -1,0 +1,34 @@
+function validName(value){
+    if(/\d/.test(value)){
+        return true;
+    }
+    return false;
+}
+
+    document.forms["validation"].addEventListener("submit", function(e){
+        let error;
+        let inputs = this;
+        var champsnom = document.getElementById("jojo").value;
+        
+        if(validName(champsnom) === true ){
+            console.log("Vous ne pouvez pas rentrer de chiffre")
+        }else{
+            console.log("des lettre seulement")
+        }
+
+        
+        //tous les champs doivent êtres remplit
+        for (let i = 0; i < inputs.length; i++){
+            if (!inputs[i].value){
+                error = "Veuillez renseigner tous les champs";
+            }
+        }
+        if (error){
+            e.preventDefault();
+            let errorMessage = document.getElementById("error");
+            errorMessage.innerHTML = error;
+            return false;
+        }else{
+            alert('formulaire envoye !');
+        }
+    });
